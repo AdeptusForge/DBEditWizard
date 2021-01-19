@@ -1,44 +1,44 @@
 ﻿  DBEditMain.cpp
-  DBEditWizard.vcxproj -> C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Debug\DBEditWizard.exe
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\bbcf_bbtag_script_parser.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\bbcf_bbtag_script_rebuilder.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\bbcpex_compile.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\bbcpex_extractImages.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\bbcpex_generate_idapy.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\bbcpex_obtain.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\bbcpex_script_hook.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\bbcpex_script_parser.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\bbcpex_script_rebuilder.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\dbfz_script_parser.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\dbfz_script_parser.pyc
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\dbfz_script_rebuilder.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\deploy_resources.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\extractHip.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\gg_rev_script_parser.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\gg_rev_script_rebuilder.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\jonbin_parser.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\named_value_lookup.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\pac.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\README.md
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\revelator_compile.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\revelator_obtain.py
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\TestCell.dbzscript
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\TestCommon.dbzscript
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\TestGoku.dbzscript
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\bb\characters.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\bb\commandDB.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\bb\commandDB_old.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\dbfz\Backup 12-20-20.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\dbfz\Backup 12-9-20.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\dbfz\commandDB.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\gg_rev\commandDB.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\characters.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\commandDB.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\airCounterhitEffect.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\airHitEffect.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\groundCounterhitEffect.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\groundHitEffect.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\guardType.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\move_input.json
-  C:\Users\adept\Desktop\DB_Edit_Wizard\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\move_type.json
+  DBEditWizard.vcxproj -> C:\Users\Steffen\Desktop\DBEditWizard\Debug\DBEditWizard.exe
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\bbcf_bbtag_script_parser.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\bbcf_bbtag_script_rebuilder.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\bbcpex_compile.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\bbcpex_extractImages.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\bbcpex_generate_idapy.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\bbcpex_obtain.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\bbcpex_script_hook.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\bbcpex_script_parser.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\bbcpex_script_rebuilder.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\dbfz_script_parser.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\dbfz_script_parser.pyc
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\dbfz_script_rebuilder.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\deploy_resources.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\extractHip.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\gg_rev_script_parser.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\gg_rev_script_rebuilder.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\jonbin_parser.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\named_value_lookup.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\pac.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\README.md
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\revelator_compile.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\revelator_obtain.py
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\TestCell.dbzscript
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\TestCommon.dbzscript
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\TestGoku.dbzscript
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\bb\characters.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\bb\commandDB.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\bb\commandDB_old.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\dbfz\Backup 12-20-20.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\dbfz\Backup 12-9-20.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\dbfz\commandDB.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\gg_rev\commandDB.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\characters.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\commandDB.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\airCounterhitEffect.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\airHitEffect.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\groundCounterhitEffect.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\groundHitEffect.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\guardType.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\move_input.json
+  C:\Users\Steffen\Desktop\DBEditWizard\Parser\bbtools-master\static_db\gg_revelator\named_values\move_type.json
   41 File(s) copied
