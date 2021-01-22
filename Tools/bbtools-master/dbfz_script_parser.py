@@ -2,6 +2,7 @@ import os, struct, json, astor, sys
 from ast import *
 from collections import defaultdict, OrderedDict
 
+mypath = "C:\Users\Steffen\Documents\Xenonauts"
 commandDB  = json.loads(open('static_db/dbfz/commandDB.json').read())
 
 commandCounts = defaultdict(int)
@@ -300,7 +301,7 @@ def parse_dbscript(f,basename,dirname):
         f.seek(BASE+4+0x24*FUNCTION_COUNT+FUNCTION_OFFSET)
         parse_bbscript_routine(f)
     '''
-	mypath = "C:\Users\Adept\Desktop\DBFZKai\DragonBallFighterZKai\DBFZ\dbfz_parsed_dump"
+
     py = open(os.path.join(mypath, basename) + ".py","w")
     py.write(astor.to_source(astRoot))
     py.close()
