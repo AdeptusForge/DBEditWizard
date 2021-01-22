@@ -1,4 +1,3 @@
-
 #include <windows.h>      // For common windows data types and function headers
 #define STRICT_TYPED_ITEMIDS
 #include <shlobj.h>
@@ -12,21 +11,83 @@
 #include <strsafe.h>      // for StringCchPrintfW
 #include <shtypes.h>      // for COMDLG_FILTERSPEC
 #include <new>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
 #pragma comment(linker, "\"/manifestdependency:type='Win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
 const COMDLG_FILTERSPEC c_rgSaveTypes[] =
 {
-	{L"Word Document (*.doc)",       L"*.doc"},
-	{L"Web Page (*.htm; *.html)",    L"*.htm;*.html"},
-	{L"Text Document (*.txt)",       L"*.txt"},
-	{L"All Documents (*.*)",         L"*.*"}
+	{L"PY FILE (*.py)",       L"*.py"},
 };
 
+#include <stdio.h>  /* defines FILENAME_MAX */
+#include <direct.h>
+#define GetCurrentDir _getcwd
+std::string GetCurrentWorkingDir(void) {
+	char buff[FILENAME_MAX];
+	GetCurrentDir(buff, FILENAME_MAX);
+	std::string current_working_dir(buff);
+	return current_working_dir;
+}
+
+const std::string toolPath = GetCurrentWorkingDir() + "\\Tools\\";
+std::string dumpPath;
+std::string parsePath;
+std::string pakPath;
+
+//Verifies whether the file is retrievable.
+bool VerifyFileOrFolder(std::string filePath = "")
+{
+	std::string debugS;
+	std::string testPath = GetCurrentWorkingDir()+ "\\" + filePath;
+	DWORD ftyp = GetFileAttributesA(filePath.c_str());
+	if (ftyp != INVALID_FILE_ATTRIBUTES)
+	{
+		debugS = "File found - "+ testPath + "\n";
+		OutputDebugString(debugS.c_str());
+		return true;
+	}
+	debugS = "No file found - " + testPath + "\n";
+	OutputDebugString(debugS.c_str());
+	return false;
+}
+
+//Verifies whether the file is retrievable.
+bool VerifyTools()
+{
+	std::string debugS;
+	std::string testPath;
+	for (int i = 0; i < 3; i++)
+	{
+		testPath = "Tools\\";
+		if (i == 1)
+			testPath += "UnrealPak\\UnrealPak-With-Compression.bat";
+		if (i == 0)
+			testPath += "bbtools-master\\dbfz_script_parser.py";
+		if (i == 2)
+			testPath += "bbtools-master\\dbfz_script_rebuilder.py";
+		if (VerifyFileOrFolder(testPath))
+		{
+			OutputDebugString("Alls right in the world");
+			continue;
+		}
+		else
+			return false;
+	}
+	return true;
+}
+int GetFileSize(std::string filename)
+{
+	struct stat stat_buf;
+	int rc = stat(filename.c_str(), &stat_buf);
+	return rc == 0 ? stat_buf.st_size : -1;
+}
+
 // Indices of file types
-#define INDEX_WORDDOC 1
-#define INDEX_WEBPAGE 2
-#define INDEX_TEXTDOC 3
+#define INDEX_PY 1
 
 // Controls
 #define CONTROL_GROUP           2000
@@ -36,12 +97,10 @@ const COMDLG_FILTERSPEC c_rgSaveTypes[] =
 										// because it is a child control under CONTROL_RADIOBUTTONLIST
 
 // IDs for the Task Dialog Buttons
-#define IDC_BASICFILEOPEN                       100
-#define IDC_ADDITEMSTOCUSTOMPLACES              101
-#define IDC_ADDCUSTOMCONTROLS                   102
-#define IDC_SETDEFAULTVALUESFORPROPERTIES       103
-#define IDC_WRITEPROPERTIESUSINGHANDLERS        104
-#define IDC_WRITEPROPERTIESWITHOUTUSINGHANDLERS 105
+#define DBE_SelectDumpFolder                    100
+#define DBE_ParseCharaFile						101
+#define DBE_RebuildCharaFile					102
+#define DBE_PakFiles							103
 
 /* File Dialog Event Handler *****************************************************************************************************/
 
@@ -113,35 +172,13 @@ HRESULT CDialogEventHandler::OnTypeChange(IFileDialog* pfd)
 
 			switch (uIndex)
 			{
-			case INDEX_WORDDOC:
+			case INDEX_PY:
 				// When .doc is selected, let's ask for some arbitrary property, say Title.
 				hr = PSGetPropertyDescriptionListFromString(L"prop:System.Title", IID_PPV_ARGS(&pdl));
 				if (SUCCEEDED(hr))
 				{
 					// FALSE as second param == do not show default properties.
 					hr = pfsd->SetCollectedProperties(pdl, FALSE);
-					pdl->Release();
-				}
-				break;
-
-			case INDEX_WEBPAGE:
-				// When .html is selected, let's ask for some other arbitrary property, say Keywords.
-				hr = PSGetPropertyDescriptionListFromString(L"prop:System.Keywords", IID_PPV_ARGS(&pdl));
-				if (SUCCEEDED(hr))
-				{
-					// FALSE as second param == do not show default properties.
-					hr = pfsd->SetCollectedProperties(pdl, FALSE);
-					pdl->Release();
-				}
-				break;
-
-			case INDEX_TEXTDOC:
-				// When .txt is selected, let's ask for some other arbitrary property, say Author.
-				hr = PSGetPropertyDescriptionListFromString(L"prop:System.Author", IID_PPV_ARGS(&pdl));
-				if (SUCCEEDED(hr))
-				{
-					// TRUE as second param == show default properties as well, but show Author property first in list.
-					hr = pfsd->SetCollectedProperties(pdl, TRUE);
 					pdl->Release();
 				}
 				break;
@@ -347,7 +384,7 @@ HRESULT BasicFileOpen()
 						if (SUCCEEDED(hr))
 						{
 							// Set the selected file type index to Word Docs for this example.
-							hr = pfd->SetFileTypeIndex(INDEX_WORDDOC);
+							hr = pfd->SetFileTypeIndex(INDEX_PY);
 							if (SUCCEEDED(hr))
 							{
 								// Set the default extension to be ".doc" file.
@@ -558,7 +595,7 @@ HRESULT SetDefaultValuesForProperties()
 				hr = pfsd->SetFileTypes(ARRAYSIZE(c_rgSaveTypes), c_rgSaveTypes);
 				if (SUCCEEDED(hr))
 				{
-					hr = pfsd->SetFileTypeIndex(INDEX_WORDDOC);
+					hr = pfsd->SetFileTypeIndex(INDEX_PY);
 					if (SUCCEEDED(hr))
 					{
 						hr = pfsd->SetDefaultExtension(L"doc");
@@ -874,24 +911,26 @@ HRESULT WritePropertiesWithoutUsingHandlers()
 	}
 	return hr;
 }
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 // Application entry point
-int APIENTRY wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
+int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR, int)
 {
+	VerifyTools();
+	OutputDebugString(GetCurrentWorkingDir().c_str());
 	HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
 	if (SUCCEEDED(hr))
 	{
+
 		TASKDIALOGCONFIG taskDialogParams = { sizeof(taskDialogParams) };
 		taskDialogParams.dwFlags = TDF_USE_COMMAND_LINKS | TDF_ALLOW_DIALOG_CANCELLATION;
 
 		TASKDIALOG_BUTTON const buttons[] =
 		{
-			{ IDC_BASICFILEOPEN,                       L"Basic File Open" },
-			{ IDC_ADDITEMSTOCUSTOMPLACES,              L"Add Items to Common Places" },
-			{ IDC_ADDCUSTOMCONTROLS,                   L"Add Custom Controls" },
-			{ IDC_SETDEFAULTVALUESFORPROPERTIES,       L"Change Property Order" },
-			{ IDC_WRITEPROPERTIESUSINGHANDLERS,        L"Write Properties Using Handlers" },
-			{ IDC_WRITEPROPERTIESWITHOUTUSINGHANDLERS, L"Write Properties without Using Handlers" },
+			{ DBE_SelectDumpFolder,						L"Select - Umodel Dump of DBFZ" },
+			{ DBE_ParseCharaFile,						L"Parse - DBFZ Character Data" },
+			{ DBE_RebuildCharaFile,						L"Rebuild - Edited Character Data" },
+			{ DBE_PakFiles,								L"Pak - File Folder" },
 		};
 
 		taskDialogParams.pButtons = buttons;
@@ -909,30 +948,42 @@ int APIENTRY wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
 				{
 					break;
 				}
-				else if (selectedId == IDC_BASICFILEOPEN)
+				else if (selectedId == DBE_SelectDumpFolder)
 				{
 					BasicFileOpen();
 				}
-				else if (selectedId == IDC_ADDITEMSTOCUSTOMPLACES)
+				else if (selectedId == DBE_ParseCharaFile)
 				{
-					AddItemsToCommonPlaces();
+					BasicFileOpen();
 				}
-				else if (selectedId == IDC_ADDCUSTOMCONTROLS)
+				else if (selectedId == DBE_RebuildCharaFile)
 				{
-					AddCustomControls();
+					BasicFileOpen();
 				}
-				else if (selectedId == IDC_SETDEFAULTVALUESFORPROPERTIES)
+				else if (selectedId == DBE_PakFiles)
 				{
-					SetDefaultValuesForProperties();
+					BasicFileOpen();
 				}
-				else if (selectedId == IDC_WRITEPROPERTIESUSINGHANDLERS)
-				{
-					WritePropertiesUsingHandlers();
-				}
-				else if (selectedId == IDC_WRITEPROPERTIESWITHOUTUSINGHANDLERS)
-				{
-					WritePropertiesWithoutUsingHandlers();
-				}
+				//else if (selectedId == IDC_ADDITEMSTOCUSTOMPLACES)
+				//{
+				//	AddItemsToCommonPlaces();
+				//}
+				//else if (selectedId == IDC_ADDCUSTOMCONTROLS)
+				//{
+				//	AddCustomControls();
+				//}
+				//else if (selectedId == IDC_SETDEFAULTVALUESFORPROPERTIES)
+				//{
+				//	SetDefaultValuesForProperties();
+				//}
+				//else if (selectedId == IDC_WRITEPROPERTIESUSINGHANDLERS)
+				//{
+				//	WritePropertiesUsingHandlers();
+				//}
+				//else if (selectedId == IDC_WRITEPROPERTIESWITHOUTUSINGHANDLERS)
+				//{
+				//	WritePropertiesWithoutUsingHandlers();
+				//}
 			}
 		}
 		CoUninitialize();
