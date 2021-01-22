@@ -82,7 +82,7 @@
       <AdditionalDependencies>propsys.lib;shlwapi.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>echo D|XCOPY $(SolutionDir)Parser $(TargetDir)Parser\ /E /Y</Command>
+      <Command>echo D|XCOPY $(SolutionDir)Tools $(TargetDir)Tools\ /E /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
